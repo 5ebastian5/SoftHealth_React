@@ -1,0 +1,160 @@
+/*---- Estructura General del Componente BuscarHC ----------------------------------------------*/
+.form-wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 50px;
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+/*---- Título ----------------------------------------------------------------------------------*/
+form h2 {
+  margin-bottom: 2.5vw;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/*---- Agrupación de Campos ---------------------------------------------------------------------*/
+.form-group1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #444;
+  text-align: left;
+}
+
+/*---- Inputs -----------------------------------------------------------------------------------*/
+form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  background-color: #f8f8f8;
+  color: #333;
+  box-sizing: border-box;
+  transition: all var(--transition-speed);
+  margin-bottom: 12px;
+}
+
+form input2 {
+  font-size: 10px;
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(60, 178, 42, 0.2);
+}
+
+/*---- Botón Buscar ----------------------------------------------------------------------------*/
+.save1 {
+  width: 200px;
+  align-self: center;
+  font-family: 'Inter', sans-serif;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  background-color: #3cb22a;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 0;
+  border: 0;
+}
+
+.save1:hover {
+  background-color: #2a8a1d;
+  transform: scale(1.05);
+  color: #454545;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*---- Alertas ----------------------------------------------------------------------------------*/
+.alert1 {
+  padding: 15px;
+  border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert1-exito {
+  margin-top: 30px;
+  margin-bottom: 0;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert1-error {
+  margin-top: 30px;
+  margin-bottom: 0px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/*---- Responsividad ---------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+  form h2 {
+    font-size: 24px;
+    margin-bottom: 6vw;
+  }
+
+  .save1 {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .alert {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 30px;
+  }
+
+  form h2 {
+    font-size: 20px;
+    margin-bottom: 8vw;
+  }
+
+  form label {
+    font-size: 14px;
+  }
+
+  form input {
+    font-size: 14px;
+  }
+
+  .save1 {
+    font-size: 14px;
+  }
+}

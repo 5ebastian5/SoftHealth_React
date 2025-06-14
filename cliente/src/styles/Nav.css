@@ -1,0 +1,109 @@
+/*-- Barra de navegación fija y centrada ---------------------------------------------------------*/
+.nav {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 1000;
+}
+
+/*-- Header (contenedor interno de la barra) -----------------------------------------------------*/
+header {
+    background-color: #454545;;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+/*-- Menú de navegación ---------------------------------------------------------------------------*/
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    margin: 0;
+    gap: 8rem;
+    list-style: none;
+}
+
+nav ul li {
+    display: flex;
+    flex-direction: column; /* Ícono arriba, texto abajo */
+    align-items: center;
+    text-align: center;
+}
+
+nav ul li a {
+    display: flex;
+    flex-direction: column; /* Ícono sobre texto */
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* nav ul li .logout-btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: -100px;
+} */
+
+nav ul form button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+nav ul form button:hover {
+    text-decoration: underline;
+}
+
+/*-- Estilos para íconos específicos -------------------------------------------------------------*/
+nav ul li .home,
+nav ul li .user,
+nav ul li .phone {
+    height: 35px;
+    filter: grayscale(100%) invert(100%);
+    margin-bottom: 5px;
+}
+
+nav ul li .home:hover,
+nav ul li .user:hover,
+nav ul li .phone:hover {
+    filter: grayscale(100%) invert(15%);
+}
+
+/*-- Responsive (pantallas menores a 768px) -------------------------------------------------------*/
+@media (max-width: 768px) {
+    .nav {
+        top: 6vw;
+        padding: 0 30px;
+    }
+
+    nav ul {
+        gap: 1.5rem;
+    }
+
+    nav ul li .softhealth {
+        height: 35px;
+    }
+
+    nav ul li .home,
+    nav ul li .user,
+    nav ul li .phone {
+        height: 25px;
+    }
+}

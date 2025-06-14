@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.custom-footer {
+  background-color: #454545;;
+  color: #ffffff;
+  padding: 1.6rem 3rem 0.7rem 3rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  width: 100vw;
+  margin: 0;
+  border-radius: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+}
+
+.footer-section h5 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #cccccc;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #ffffff;
+}
+
+.footer-columns {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.info {
+  text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info {
+    text-align: left;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+  }
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.7rem;
+  color: #aaaaaa;
+}
