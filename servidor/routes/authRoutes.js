@@ -1,10 +1,12 @@
 const express = require('express');
+const axios = require('axios');
+
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const pool = require('../db'); // usa el pool correcto
 
-// ✅ Forgot Password
+// forgot-password route CORREGIDA (sin emailjs)
 router.post('/forgot-password', async (req, res) => {
   const { correo } = req.body;
   const token = crypto.randomBytes(32).toString('hex');
@@ -27,21 +29,21 @@ router.post('/forgot-password', async (req, res) => {
     }
 
     const resetLink = `http://localhost:3000/reset-password/${token}`;
-    console.log('🔗 Enlace de recuperación:', resetLink);
+    console.log('✅ Token generado:', resetLink);
 
     res.json({
       success: true,
-      message: 'Correo de recuperación enviado (simulado)',
-      link: resetLink // ← esto es lo que recibe el frontend
+      link: resetLink
     });
 
   } catch (err) {
     console.error('❌ Error en forgot-password:', err);
-    res.status(500).json({ message: 'Error de servidor' });
+    res.status(500).json({ message: 'Error al generar el enlace' });
   } finally {
     if (connection) connection.release();
   }
 });
+
 
 // ✅ Reset Password
 router.post('/reset-password', async (req, res) => {
