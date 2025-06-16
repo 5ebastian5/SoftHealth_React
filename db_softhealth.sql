@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `administrativo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla db_softhealth.administrativo: ~5 rows (aproximadamente)
-INSERT INTO `administrativo` (`documento`, `hv`) VALUES
+INSERT IGNORE INTO `administrativo` (`documento`, `hv`) VALUES
 	('111', NULL),
 	('121212', NULL),
 	('123', NULL),
