@@ -12,8 +12,8 @@
 
 ## 📘 Documentation
 
-- **User Manual**: [Spanish..](https://www.canva.com/design/DAGoGmvJWGs/pPrCgZZ2F1MrAmqeKgvAHg/edit?utm_content=DAGoGmvJWGs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton), [English...](https://www.canva.com/design/DAGqiwdCDNc/M34Egj6prxySi_sx__bVDQ/edit)
-- **Technical Manual**: [Spanish...](https://www.canva.com/design/DAGoGmvJWGs/pPrCgZZ2F1MrAmqeKgvAHg/edit?utm_content=DAGoGmvJWGs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton), [English...](https://www.canva.com/design/DAGqiwdCDNc/M34Egj6prxySi_sx__bVDQ/edit)
+- **User Manual**: [English](https://www.canva.com/design/DAGqiwdCDNc/M34Egj6prxySi_sx__bVDQ/edit), [spanish...](https://www.canva.com/design/DAGoGmvJWGs/pPrCgZZ2F1MrAmqeKgvAHg/edit?utm_content=DAGoGmvJWGs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- **Technical Manual**: [English](https://www.canva.com/design/DAGqiwdCDNc/M34Egj6prxySi_sx__bVDQ/edit), [spanish...](https://www.canva.com/design/DAGoGmvJWGs/pPrCgZZ2F1MrAmqeKgvAHg/edit?utm_content=DAGoGmvJWGs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ---
 
