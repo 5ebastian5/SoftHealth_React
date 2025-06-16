@@ -1,20 +1,20 @@
 # 🏥 SoftHealth
 
-**SoftHealth** es un sistema de información web diseñado para la gestión integral de usuarios en el sector salud y la administración de historias clínicas. Su objetivo principal es optimizar el acceso, organización y seguimiento de la información médica en entidades locales, ofreciendo una solución eficiente y segura para médicos, pacientes y personal administrativo.
+**SoftHealth** is a web-based information system designed for comprehensive user management and medical record administration in the healthcare sector. Its main objective is to optimize access, organization, and tracking of medical information in local health institutions, offering an efficient and secure solution for doctors, patients, and administrative staff.
 
-## ✨ Funcionalidades principales
+## ✨ Key Features
 
-- Registro y actualización de datos personales.
-- Acceso controlado según el rol del usuario (paciente, médico o administrativo).
-- Administración de historiales clínicos y procesos médicos asociados.
-- Integración con estructuras relacionales y control de integridad referencial.
-- Interfaz intuitiva y adaptable para facilitar su uso en entornos reales.
+- Registration and update of personal user data.
+- Role-based access control (patient, doctor, administrative).
+- Management of medical histories and clinical processes linked to each patient.
+- Integration with relational database structures and enforcement of referential integrity.
+- User-friendly and adaptable interface for real-world healthcare environments.
 
-## 📘 Manuales
+## 📘 Documentation
 
-- **Manual de usuario**: [Ver en Canva](https://www.canva.com/design/DAGpcOvtEyA/2RRa7PIz42Knl4IQaVChmQ/edit)
-- **Manual técnico**: [Ver en Canva](https://www.canva.com/design/DAGoGmvJWGs/pPrCgZZ2F1MrAmqeKgvAHg/edit)
+- **User Manual**: [View on Canva](https://www.canva.com/design/DAGpcOvtEyA/2RRa7PIz42Knl4IQaVChmQ/edit)
+- **Technical Manual**: [View on Canva](https://www.canva.com/design/DAGoGmvJWGs/pPrCgZZ2F1MrAmqeKgvAHg/edit)
 
 ---
 
-> Desarrollado como proyecto académico con fines educativos y de práctica profesional.
+> Developed as an academic project for educational and professional training purposes.
