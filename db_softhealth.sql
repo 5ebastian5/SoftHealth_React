@@ -16,67 +16,9 @@
 
 
 -- Volcando estructura de base de datos para db_softhealth
-CREATE DATABASE IF NOT EXISTS `db_softhealth` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `db_softhealth` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci
+ */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `db_softhealth`;
-
--- Volcando estructura para tabla db_softhealth.administrativo
-CREATE TABLE IF NOT EXISTS `administrativo` (
-  `documento` varchar(20) NOT NULL,
-  `hv` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`documento`),
-  CONSTRAINT `administrativo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla db_softhealth.administrativo: ~5 rows (aproximadamente)
-INSERT IGNORE INTO `administrativo` (`documento`, `hv`) VALUES
-	('111', NULL),
-	('121212', NULL),
-	('123', NULL),
-	('54564', NULL),
-	('666', NULL);
-
--- Volcando estructura para tabla db_softhealth.historialmedico
-CREATE TABLE IF NOT EXISTS `historialmedico` (
-  `id_hc` int NOT NULL AUTO_INCREMENT,
-  `documento` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id_hc`),
-  KEY `documento` (`documento`),
-  CONSTRAINT `historialmedico_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `paciente` (`documento`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla db_softhealth.historialmedico: ~2 rows (aproximadamente)
-INSERT INTO `historialmedico` (`id_hc`, `documento`) VALUES
-	(9, '101010'),
-	(4, '333');
-
--- Volcando estructura para tabla db_softhealth.medico
-CREATE TABLE IF NOT EXISTS `medico` (
-  `documento` varchar(20) NOT NULL,
-  `especialidad` varchar(100) DEFAULT NULL,
-  `cargo` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`documento`),
-  CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla db_softhealth.medico: ~2 rows (aproximadamente)
-INSERT INTO `medico` (`documento`, `especialidad`, `cargo`) VALUES
-	('222', 'Neurologo', 'Cirujano'),
-	('777', 'Optometrista', 'Cirujano');
-
--- Volcando estructura para tabla db_softhealth.paciente
-CREATE TABLE IF NOT EXISTS `paciente` (
-  `documento` varchar(20) NOT NULL,
-  `id_hc` int DEFAULT NULL,
-  PRIMARY KEY (`documento`),
-  UNIQUE KEY `id_hc` (`id_hc`),
-  CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Volcando datos para la tabla db_softhealth.paciente: ~3 rows (aproximadamente)
-INSERT INTO `paciente` (`documento`, `id_hc`) VALUES
-	('101010', NULL),
-	('333', NULL),
-	('444', NULL);
 
 -- Volcando estructura para tabla db_softhealth.persona
 CREATE TABLE IF NOT EXISTS `persona` (
@@ -89,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `persona` (
   `direccion` varchar(100) DEFAULT NULL,
   `imagenPerfil` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`documento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla db_softhealth.persona: ~11 rows (aproximadamente)
 INSERT INTO `persona` (`documento`, `nombre`, `apellido`, `tipoDocumento`, `telefono`, `correo`, `direccion`, `imagenPerfil`) VALUES
@@ -105,6 +47,66 @@ INSERT INTO `persona` (`documento`, `nombre`, `apellido`, `tipoDocumento`, `tele
 	('666', 'admin6', 'admin6', 'CC', '849849', 'admin6@gmail.com', 'direccion', NULL),
 	('777', 'med7', 'med7', 'CC', '51564', 'med7@gmail.com', 'direccion', NULL);
 
+-- Volcando estructura para tabla db_softhealth.administrativo
+CREATE TABLE IF NOT EXISTS `administrativo` (
+  `documento` varchar(20) NOT NULL,
+  `hv` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`documento`),
+  CONSTRAINT `administrativo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla db_softhealth.administrativo: ~5 rows (aproximadamente)
+INSERT IGNORE INTO `administrativo` (`documento`, `hv`) VALUES
+	('111', NULL),
+	('121212', NULL),
+	('123', NULL),
+	('54564', NULL),
+	('666', NULL);
+
+-- Volcando estructura para tabla db_softhealth.paciente
+CREATE TABLE IF NOT EXISTS `paciente` (
+  `documento` varchar(20) NOT NULL,
+  `id_hc` int DEFAULT NULL,
+  PRIMARY KEY (`documento`),
+  UNIQUE KEY `id_hc` (`id_hc`),
+  CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla db_softhealth.paciente: ~3 rows (aproximadamente)
+INSERT INTO `paciente` (`documento`, `id_hc`) VALUES
+	('101010', NULL),
+	('333', NULL),
+	('444', NULL);
+
+-- Volcando estructura para tabla db_softhealth.historialmedico
+CREATE TABLE IF NOT EXISTS `historialmedico` (
+  `id_hc` int NOT NULL AUTO_INCREMENT,
+  `documento` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_hc`),
+  KEY `documento` (`documento`),
+  CONSTRAINT `historialmedico_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `paciente` (`documento`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla db_softhealth.historialmedico: ~2 rows (aproximadamente)
+INSERT INTO `historialmedico` (`id_hc`, `documento`) VALUES
+	(9, '101010'),
+	(4, '333');
+
+-- Volcando estructura para tabla db_softhealth.medico
+CREATE TABLE IF NOT EXISTS `medico` (
+  `documento` varchar(20) NOT NULL,
+  `especialidad` varchar(100) DEFAULT NULL,
+  `cargo` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`documento`),
+  CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla db_softhealth.medico: ~2 rows (aproximadamente)
+INSERT INTO `medico` (`documento`, `especialidad`, `cargo`) VALUES
+	('222', 'Neurologo', 'Cirujano'),
+	('777', 'Optometrista', 'Cirujano');
+
+
 -- Volcando estructura para tabla db_softhealth.procesoclinico
 CREATE TABLE IF NOT EXISTS `procesoclinico` (
   `idProcesoClinico` int NOT NULL AUTO_INCREMENT,
@@ -119,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `procesoclinico` (
   PRIMARY KEY (`idProcesoClinico`),
   KEY `id_hc` (`id_hc`),
   CONSTRAINT `procesoclinico_ibfk_1` FOREIGN KEY (`id_hc`) REFERENCES `historialmedico` (`id_hc`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla db_softhealth.procesoclinico: ~4 rows (aproximadamente)
 INSERT INTO `procesoclinico` (`idProcesoClinico`, `fecha`, `id_hc`, `tipoConsulta`, `anamnesis`, `examenFisico`, `diagnostico`, `tratamiento`, `nota`) VALUES
@@ -130,12 +132,12 @@ INSERT INTO `procesoclinico` (`idProcesoClinico`, `fecha`, `id_hc`, `tipoConsult
 
 -- Volcando estructura para tabla db_softhealth.rol
 CREATE TABLE IF NOT EXISTS `rol` (
-  `documento` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `documento` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `rol_id` varchar(1) NOT NULL DEFAULT 'P',
   PRIMARY KEY (`documento`) USING BTREE,
   CONSTRAINT `FK_rol_persona` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `chk_rol_valido` CHECK ((`rol_id` in (_utf8mb4'A',_utf8mb4'M',_utf8mb4'P')))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla db_softhealth.rol: ~10 rows (aproximadamente)
 INSERT INTO `rol` (`documento`, `rol_id`) VALUES
@@ -160,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`documento`),
   KEY `idx_usuario_rol` (`rol_id`),
   CONSTRAINT `FK_usuario_persona` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla db_softhealth.usuario: ~10 rows (aproximadamente)
 INSERT INTO `usuario` (`documento`, `contrasena`, `rol_id`, `reset_token`, `reset_expires`) VALUES

@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Nav.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Nav() {
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem('user');
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('rol');
+    navigate('/');
+  };
+  
     return (
       <div className="nav">
           <header className="container-fluid sticky-top">
@@ -40,15 +50,28 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/login/paciente">
-                    <img 
-                      src="/Images/user.svg" 
-                      alt="Iniciar Sesión" 
-                      className="user" 
-                      title="Iniciar Sesión"
-                    />
-                  </Link>
-                </li>
+  {isLoggedIn ? (
+    <button onClick={handleLogout} className="logout-btn">
+      <img 
+        src="/Images/logout.svg" 
+        alt="Cerrar Sesión" 
+        className="user" 
+        title="Cerrar Sesión"
+      />
+    </button>
+  ) : (
+    <Link to="/login">
+      <img 
+        src="/Images/user.svg" 
+        alt="Iniciar Sesión" 
+        className="user" 
+        title="Iniciar Sesión"
+      />
+    </Link>
+  )}
+</li>
+
+
               </ul>
             </nav>
           </header>
