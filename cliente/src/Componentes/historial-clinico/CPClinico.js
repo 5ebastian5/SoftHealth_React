@@ -115,138 +115,130 @@ export default function CPClinico() {
   return (
     <>
       <form onSubmit={handleSubmit} className="form4">
-        <h2>Registrar Proceso Clínico</h2>
+  <h2>Registrar Proceso Clínico</h2>
 
-        <div className="form4-grid">
-          {Object.entries({
-            Fecha: (
-              <input
-                type="datetime-local"
-                name="fecha"
-                value={formData.fecha || ""}
-                onChange={handleChange}
-                required
-              />
-            ),
-            "Tipo de Consulta": (
-              <input
-                type="text"
-                name="tipoConsulta"
-                value={formData.tipoConsulta || ""}
-                onChange={handleChange}
-                required
-              />
-            ),
-            Anamnesis: (
-              <textarea name="anamnesis" value={formData.anamnesis || ""} onChange={handleChange} />
-            ),
-            "Examen Físico": (
-              <textarea name="examenFisico" value={formData.examenFisico || ""} onChange={handleChange} />
-            ),
-            Diagnóstico: (
-              <textarea name="diagnostico" value={formData.diagnostico || ""} onChange={handleChange} />
-            ),
-            Tratamiento: (
-              <textarea name="tratamiento" value={formData.tratamiento || ""} onChange={handleChange} />
-            ),
-            Nota: (
-              <textarea name="nota" value={formData.nota || ""} onChange={handleChange} />
-            ),
-            "Enfermedades actuales": (
-              <textarea name="enfermedadesActuales" value={formData.enfermedadesActuales || ""} onChange={handleChange} />
-            ),
-            Medicamentos: (
-              <textarea name="medicamentos" value={formData.medicamentos || ""} onChange={handleChange} />
-            ),
-            "Métodos anticonceptivos": (
-              <input type="text" name="metodosAnticonceptivos" value={formData.metodosAnticonceptivos || ""} onChange={handleChange} />
-            ),
-            "Estado mental / neurológico": (
-              <textarea name="estadoMental" value={formData.estadoMental || ""} onChange={handleChange} />
-            ),
-            TA: (
-              <input type="text" name="ta" value={formData.ta || ""} onChange={handleChange} />
-            ),
-            FC: (
-              <input type="text" name="fc" value={formData.fc || ""} onChange={handleChange} />
-            ),
-            Temperatura: (
-              <input type="text" name="temp" value={formData.temp || ""} onChange={handleChange} />
-            ),
-            "Frecuencia Respiratoria": (
-              <input type="text" name="frecuenciaRespiratoria" value={formData.frecuenciaRespiratoria || ""} onChange={handleChange} />
-            ),
-            "Peso (kg)": (
-              <input
-                type="number"
-                step="0.01"
-                name="peso"
-                value={formData.peso ?? ""}
-                onChange={(e) => {
-                  const peso = e.target.value;
-                  setFormData((prev) => {
-                    const tallaMetros = prev.talla ? prev.talla / 100 : 0;
-                    const nuevoIMC = peso && tallaMetros ? (parseFloat(peso) / (tallaMetros ** 2)).toFixed(2) : "";
-                    return {
-                      ...prev,
-                      peso: peso === "" ? null : parseFloat(peso),
-                      imc: nuevoIMC,
-                    };
-                  });
-                }}
-              />
-            ),
-            "Talla (cm)": (
-              <input
-                type="number"
-                name="talla"
-                value={formData.talla ?? ""}
-                onChange={(e) => {
-                  const talla = e.target.value;
-                  setFormData((prev) => {
-                    const peso = prev.peso;
-                    const tallaMetros = talla ? parseFloat(talla) / 100 : 0;
-                    const nuevoIMC = peso && tallaMetros ? (peso / (tallaMetros ** 2)).toFixed(2) : "";
-                    return {
-                      ...prev,
-                      talla: talla === "" ? null : parseFloat(talla),
-                      imc: nuevoIMC,
-                    };
-                  });
-                }}
-              />
-            ),
-            IMC: (
-              <input type="text" name="imc" value={formData.imc || ""} readOnly />
-            ),
-            "Exámenes complementarios": (
-              <textarea name="examenesComplementarios" value={formData.examenesComplementarios || ""} onChange={handleChange} />
-            ),
-            Laboratorio: (
-              <textarea name="laboratorio" value={formData.laboratorio || ""} onChange={handleChange} />
-            ),
-            "¿Qué estudios?": (
-              <textarea name="queEstudios" value={formData.queEstudios || ""} onChange={handleChange} />
-            ),
-            "Antecedentes Heredo Familiares": (
-              <textarea name="antecedentesFamiliares" value={formData.antecedentesFamiliares || ""} onChange={handleChange} />
-            ),
-          }).map(([label, input], i) => (
-            <div className="form-group" key={i}>
-              <label>{label}:</label>
-              {input}
-            </div>
-          ))}
-        </div>
+  {/* === SECCIÓN: DATOS BÁSICOS === */}
+  <h3 className="dp-section-title">Datos de Consulta</h3>
+  <div className="form4-grid">
+    <div className="form-group">
+      <label>Fecha:</label>
+      <input
+        type="datetime-local"
+        name="fecha"
+        value={formData.fecha || ""}
+        onChange={handleChange}
+        required
+      />
+    </div>
 
-        <button type="submit" className="save1">Guardar</button>
+    <div className="form-group">
+      <label>Tipo de Consulta:</label>
+      <input
+        type="text"
+        name="tipoConsulta"
+        value={formData.tipoConsulta || ""}
+        onChange={handleChange}
+        required
+      />
+    </div>
+  </div>
 
-        {mensaje && (
-          <div className={`alert1 ${tipoAlerta === "exito" ? "alert1-exito" : "alert1-error"}`}>
-            {mensaje}
-          </div>
-        )}
-    </form>
-  </>
+  {/* === SECCIÓN: ANAMNESIS CLÍNICA === */}
+  <h3 className="dp-section-title">Anamnesis Clínica</h3>
+  <div className="form4-grid">
+    <div className="form-group">
+      <label>Enfermedades actuales:</label>
+      <textarea name="enfermedadesActuales" value={formData.enfermedadesActuales || ""} onChange={handleChange} />
+    </div>
+
+    <div className="form-group">
+      <label>Medicamentos:</label>
+      <textarea name="medicamentos" value={formData.medicamentos || ""} onChange={handleChange} />
+    </div>
+
+    <div className="form-group">
+      <label>Métodos anticonceptivos:</label>
+      <input type="text" name="metodosAnticonceptivos" value={formData.metodosAnticonceptivos || ""} onChange={handleChange} />
+    </div>
+
+    <div className="form-group">
+      <label>Estado mental / neurológico:</label>
+      <textarea name="estadoMental" value={formData.estadoMental || ""} onChange={handleChange} />
+    </div>
+
+    <div className="form-group"><label>TA:</label><input type="text" name="ta" value={formData.ta || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>FC:</label><input type="text" name="fc" value={formData.fc || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>Temperatura:</label><input type="text" name="temp" value={formData.temp || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>Frecuencia Respiratoria:</label><input type="text" name="frecuenciaRespiratoria" value={formData.frecuenciaRespiratoria || ""} onChange={handleChange} /></div>
+
+    <div className="form-group">
+      <label>Peso (kg):</label>
+      <input
+        type="number"
+        step="0.01"
+        name="peso"
+        value={formData.peso ?? ""}
+        onChange={(e) => {
+          const peso = e.target.value;
+          setFormData((prev) => {
+            const tallaMetros = prev.talla ? prev.talla / 100 : 0;
+            const nuevoIMC = peso && tallaMetros ? (parseFloat(peso) / (tallaMetros ** 2)).toFixed(2) : "";
+            return {
+              ...prev,
+              peso: peso === "" ? null : parseFloat(peso),
+              imc: nuevoIMC,
+            };
+          });
+        }}
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Talla (cm):</label>
+      <input
+        type="number"
+        name="talla"
+        value={formData.talla ?? ""}
+        onChange={(e) => {
+          const talla = e.target.value;
+          setFormData((prev) => {
+            const peso = prev.peso;
+            const tallaMetros = talla ? parseFloat(talla) / 100 : 0;
+            const nuevoIMC = peso && tallaMetros ? (peso / (tallaMetros ** 2)).toFixed(2) : "";
+            return {
+              ...prev,
+              talla: talla === "" ? null : parseFloat(talla),
+              imc: nuevoIMC,
+            };
+          });
+        }}
+      />
+    </div>
+
+    <div className="form-group"><label>IMC:</label><input type="text" name="imc" value={formData.imc || ""} readOnly /></div>
+
+    <div className="form-group"><label>Exámenes complementarios:</label><textarea name="examenesComplementarios" value={formData.examenesComplementarios || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>Antecedentes Heredo Familiares:</label><textarea name="antecedentesFamiliares" value={formData.antecedentesFamiliares || ""} onChange={handleChange} /></div>
+  </div>
+
+  {/* === SECCIÓN: DIAGNÓSTICO Y MANEJO === */}
+  <h3 className="dp-section-title">Diagnóstico y Manejo</h3>
+  <div className="form4-grid">
+    <div className="form-group"><label>Diagnóstico:</label><textarea name="diagnostico" value={formData.diagnostico || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>Tratamiento:</label><textarea name="tratamiento" value={formData.tratamiento || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>Laboratorio:</label><textarea name="laboratorio" value={formData.laboratorio || ""} onChange={handleChange} /></div>
+    <div className="form-group"><label>Nota:</label><textarea name="nota" value={formData.nota || ""} onChange={handleChange} /></div>
+  </div>
+
+  {/* === BOTÓN Y MENSAJE === */}
+  <button type="submit" className="save1">Guardar</button>
+  {mensaje && (
+    <div className={`alert1 ${tipoAlerta === "exito" ? "alert1-exito" : "alert1-error"}`}>
+      {mensaje}
+    </div>
+  )}
+</form>
+
+    </>
   );
 }

@@ -444,8 +444,8 @@ app.delete('/pacientes/:documento', async (req, res) => {
 
 app.post('/proceso-clinico', async (req, res) => {
   const {
-    fecha, id_hc, tipoConsulta, anamnesis, examenFisico,
-    diagnostico, tratamiento, nota,
+    fecha, id_hc, tipoConsulta,
+    examenFisico, diagnostico, tratamiento, nota,
     enfermedadesActuales, medicamentos, metodosAnticonceptivos, estadoMental,
     ta, fc, temp, frecuenciaRespiratoria, peso, talla, imc,
     examenesComplementarios, laboratorio, queEstudios, antecedentesFamiliares
@@ -462,16 +462,16 @@ app.post('/proceso-clinico', async (req, res) => {
 
     const sql = `
       INSERT INTO ProcesoClinico (
-        fecha, id_hc, tipoConsulta, anamnesis, examenFisico,
+        fecha, id_hc, tipoConsulta, examenFisico,
         diagnostico, tratamiento, nota,
         enfermedadesActuales, medicamentos, metodosAnticonceptivos, estadoMental,
         ta, fc, temp, frecuenciaRespiratoria, peso, talla, imc,
         examenesComplementarios, laboratorio, queEstudios, antecedentesFamiliares
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const valores = [
-      fecha, id_hc, tipoConsulta, anamnesis, examenFisico,
+      fecha, id_hc, tipoConsulta, examenFisico,
       diagnostico, tratamiento, nota,
       enfermedadesActuales, medicamentos, metodosAnticonceptivos, estadoMental,
       ta, fc, temp, frecuenciaRespiratoria, peso, talla, imc,
@@ -490,6 +490,35 @@ app.post('/proceso-clinico', async (req, res) => {
   }
 });
 
+
+// Obtener datos personales desde la tabla persona usando el documento
+app.get('/paciente/:documento', async (req, res) => {
+  const { documento } = req.params;
+  let connection;
+
+  try {
+    connection = await pool.getConnection();
+
+    const [rows] = await connection.query(
+      `SELECT nombre, apellido, direccion, telefono
+       FROM persona
+       WHERE documento = ?`,
+      [documento]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Paciente no encontrado." });
+    }
+
+    res.status(200).json(rows[0]);
+
+  } catch (error) {
+    console.error("❌ Error al buscar paciente:", error);
+    res.status(500).json({ message: "Error al buscar datos del paciente." });
+  } finally {
+    if (connection) connection.release();
+  }
+});
 
 
 app.get("/historial/:documento", async (req, res) => {

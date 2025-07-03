@@ -21,29 +21,24 @@ export default function DetalleProceso() {
     }
   }, [proceso]);
 
-  // Helper – item card
+ const [datosPaciente, setDatosPaciente] = useState(null);
+
+  useEffect(() => {
+  if (documento) {
+    fetch(`http://localhost:3001/paciente/${documento}`)
+      .then(res => res.json())
+      .then(data => setDatosPaciente(data))
+      .catch(() => setDatosPaciente(null));
+  }
+}, [documento]);
+
+
   const Item = ({ etiqueta, valor }) => (
     <div className="dp-item">
       <span className="dp-label">{etiqueta}</span>
       <span className="dp-value">{valor}</span>
     </div>
   );
-
-  const renderSection = (titulo, items) => {
-    const visibles = items.filter(({ valor }) => valor !== undefined && valor !== null && valor !== "");
-    if (!visibles.length) return null;
-
-    return (
-      <section className="form4">
-        <h2 className="dp-section-title">{titulo}</h2>
-        <div className="dp-grid-3">
-          {visibles.map(({ etiqueta, valor }) => (
-            <Item key={etiqueta} etiqueta={etiqueta} valor={valor} />
-          ))}
-        </div>
-      </section>
-    );
-  };
 
   if (!proceso) {
     return (
@@ -52,7 +47,9 @@ export default function DetalleProceso() {
         <p>No hay datos disponibles.</p>
         <button onClick={() => navigate(-1)} className="save1">Volver</button>
         {mensaje && (
-          <div className={`alert1 ${tipoAlerta === "exito" ? "alert1-exito" : "alert1-error"}`}>{mensaje}</div>
+          <div className={`alert1 ${tipoAlerta === "exito" ? "alert1-exito" : "alert1-error"}`}>
+            {mensaje}
+          </div>
         )}
       </div>
     );
@@ -62,50 +59,51 @@ export default function DetalleProceso() {
     <div className="form3">
       <h2 className="dp-heading">Detalle del Proceso Clínico</h2>
 
+      {/* CABECERA con datos personales + generales */}
       <div className="dp-header-grid">
-        <div><strong>Nro. Documento:</strong> {documento}</div>
-        <div><strong>Registro:</strong> {index}</div>
-        <div><strong>Fecha:</strong> {proceso.fecha}</div>
-        <div><strong>Tipo Consulta:</strong> {proceso.tipoConsulta}</div>
+  <div><strong>Nombre:</strong> {datosPaciente?.nombre} {datosPaciente?.apellido}</div>
+  <div><strong>Teléfono:</strong> {datosPaciente?.telefono}</div>
+  <div><strong>Nro. Documento:</strong> {documento}</div>
+  <div><strong>Registro:</strong> {index}</div>
+  <div><strong>Fecha:</strong> {proceso.fecha}</div>
+  <div><strong>Tipo Consulta:</strong> {proceso.tipoConsulta}</div>
+</div>
+
+
+      {/* SECCIÓN 1: Anamnesis */}
+      <section className="form4">
+        <h2 className="dp-section-title">Anamnesis</h2>
+        <div className="dp-grid-3">
+          <Item etiqueta="Enfermedades actuales:" valor={proceso.enfermedadesActuales} />
+          <Item etiqueta="Medicamentos:" valor={proceso.medicamentos} />
+          <Item etiqueta="Métodos anticonceptivos:" valor={proceso.metodosAnticonceptivos} />
+          <Item etiqueta="Estado mental / neurológico:" valor={proceso.estadoMental} />
+          <Item etiqueta="TA:" valor={proceso.ta} />
+          <Item etiqueta="FC:" valor={proceso.fc} />
+          <Item etiqueta="Frecuencia Respiratoria:" valor={proceso.frecuenciaRespiratoria} />
+          <Item etiqueta="Temperatura:" valor={proceso.temp} />
+          <Item etiqueta="Peso (kg):" valor={proceso.peso} />
+          <Item etiqueta="Talla (cm):" valor={proceso.talla} />
+          <Item etiqueta="IMC:" valor={proceso.imc} />
+          <Item etiqueta="Exámenes complementarios:" valor={proceso.examenesComplementarios} />
+          <Item etiqueta="Antecedentes Heredo‑Familiares:" valor={proceso.antecedentesFamiliares} />
+        </div>
+      </section>
+
+      {/* SECCIÓN 2: Diagnóstico y Manejo */}
+      <section className="form4">
+        <h2 className="dp-section-title">Diagnóstico y Manejo</h2>
+        <div className="dp-grid-3">
+          <Item etiqueta="Diagnóstico:" valor={proceso.diagnostico} />
+          <Item etiqueta="Tratamiento:" valor={proceso.tratamiento} />
+          <Item etiqueta="Laboratorio:" valor={proceso.laboratorio} />
+          <Item etiqueta="Nota:" valor={proceso.nota} />
+        </div>
+      </section>
+
+      <div className="form2">
+        <button onClick={() => navigate(-1)} className="save1">Volver</button>
       </div>
-
-      {renderSection("Historia Clínica Básica", [
-        { etiqueta: "Anamnesis: ", valor: proceso.anamnesis },
-        { etiqueta: "Examen Físico: ", valor: proceso.examenFisico },
-        { etiqueta: "Diagnóstico: ", valor: proceso.diagnostico },
-        { etiqueta: "Tratamiento: ", valor: proceso.tratamiento },
-        { etiqueta: "Nota: ", valor: proceso.nota },
-      ])}
-
-      {renderSection("Información Adicional", [
-        { etiqueta: "Enfermedades Actuales: ", valor: proceso.enfermedadesActuales },
-        { etiqueta: "Medicamentos: ", valor: proceso.medicamentos },
-        { etiqueta: "Métodos Anticonceptivos: ", valor: proceso.metodosAnticonceptivos },
-        { etiqueta: "Estado Mental: ", valor: proceso.estadoMental },
-      ])}
-
-      {renderSection("Signos Vitales", [
-        { etiqueta: "TA: ", valor: proceso.ta },
-        { etiqueta: "FC: ", valor: proceso.fc },
-        { etiqueta: "Temperatura: ", valor: proceso.temp },
-        { etiqueta: "Frecuencia Respiratoria: ", valor: proceso.frecuenciaRespiratoria },
-      ])}
-
-      {renderSection("Medidas Físicas", [
-        { etiqueta: "Peso (kg): ", valor: proceso.peso },
-        { etiqueta: "Talla (cm): ", valor: proceso.talla },
-        { etiqueta: "IMC: ", valor: proceso.imc },
-      ])}
-
-      {renderSection("Estudios y Antecedentes", [
-        { etiqueta: "Exámenes Complementarios: ", valor: proceso.examenesComplementarios },
-        { etiqueta: "Laboratorio: ", valor: proceso.laboratorio },
-        { etiqueta: "¿Qué estudios?: ", valor: proceso.queEstudios },
-        { etiqueta: "Antecedentes Heredo‑Familiares: ", valor: proceso.antecedentesFamiliares },
-      ])}
-    <div className="form2">
-      <button onClick={() => navigate(-1)} className="save1">Volver</button>
-    </div>
 
       {mensaje && (
         <div className={`alert1 ${tipoAlerta === "exito" ? "alert1-exito" : "alert1-error"}`}>{mensaje}</div>

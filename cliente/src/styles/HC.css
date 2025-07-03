@@ -217,14 +217,17 @@ form input:focus {
 }
 
 /* Tarjeta individual */
-.dp-item{
-  background: white;
-  border:1px solid #e5e5e5;
-  border-radius:12px;
-  padding:.8rem 1rem;
-  box-shadow:0 1px 4px rgba(0,0,0,.05);
-  gap:.35rem;
+.dp-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  min-height: 85px;
 }
+
 
 .dp-section-title{
   margin: 2rem;
@@ -317,3 +320,32 @@ form input:focus {
     margin-bottom: 6vw;
   }
 }
+
+.dp-header-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dp-header-grid div {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.dp-header-grid strong {
+  color: #444;
+}
+
+
+
+
+
