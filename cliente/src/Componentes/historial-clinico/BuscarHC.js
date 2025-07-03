@@ -8,7 +8,7 @@ export default function BuscarHC() {
   const [mensaje, setMensaje] = useState("");
   const navigate = useNavigate();
 
-  const rol = localStorage.getItem("rol"); // Obtenemos el rol
+  const rol = localStorage.getItem("rol");
 
   const handleBuscar = async () => {
     try {
@@ -24,6 +24,7 @@ export default function BuscarHC() {
 
       const id_hc = dataHC.id_hc;
       setIdHC(id_hc);
+      localStorage.setItem("idHC", id_hc); // <- guardar en localStorage
 
       const respProcesos = await fetch(`http://localhost:3001/procesos/${id_hc}`);
       const text = await respProcesos.text();
@@ -39,11 +40,12 @@ export default function BuscarHC() {
         return;
       }
 
+      // Navega a ListaProcesos con los datos necesarios
       navigate("/procesos", {
         state: {
           procesos: dataProcesos,
           documento,
-          id_hc: id_hc,
+          id_hc,
         },
       });
 
@@ -54,7 +56,7 @@ export default function BuscarHC() {
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="form2">
       <form onSubmit={(e) => { e.preventDefault(); handleBuscar(); }}>
         <h2>Buscar Historial Clínico</h2>
 
@@ -62,7 +64,7 @@ export default function BuscarHC() {
           <label htmlFor="documento">Documento del Paciente:</label>
           <input
             type="text"
-            id="documento"
+            id="documento"  
             name="documento"
             value={documento}
             onChange={(e) => setDocumento(e.target.value)}
@@ -76,7 +78,7 @@ export default function BuscarHC() {
         {mensaje && (
           <div className="alert alert-error">
             {mensaje}
-            {mensaje === "El historial clínico está vacío." && rol === "M" && (
+            {mensaje === "El historial clínico está vacío." && rol === "M" && idHC && (
               <div>
                 <Link
                   to="/crear-historia"

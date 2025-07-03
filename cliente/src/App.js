@@ -17,11 +17,11 @@ import HomeP from './Componentes/paciente/HomeP.js';
 import ReadP from './Componentes/paciente/ReadP.js'
 import BuscarHC from './Componentes/historial-clinico/BuscarHC.js';
 import CPClinico from './Componentes/historial-clinico/CPClinico.js'
-import RegPClinico from './Componentes/historial-clinico/RegPClinico.js';
-
+import DetalleProcesoClinico from './Componentes/historial-clinico/DetalleProcesoClinico.js';
+import ListadoProcesosClinicos from './Componentes/historial-clinico/ListadoProcesosClinicos.js';
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -38,7 +38,9 @@ function App() {
           <Route path="/medico/home" element={<HomeM/>}/>
           <Route path="/crear-historia" element={<CPClinico />} />
           <Route path="/buscar-historia" element={<BuscarHC />} />
-          <Route path="/procesos" element={<RegPClinico />} />
+          <Route path="/procesos" element={<ListadoProcesosClinicos />} />
+        <Route path="/detalle-proceso" element={<DetalleProcesoClinico />} />
+
           <Route path="/medico/listarmedico" element={<ReadM/>}/>
           <Route path="/paciente/register" element={<RegisterP />} />
           <Route path="/paciente/register/:documento" element={<RegisterP />} />

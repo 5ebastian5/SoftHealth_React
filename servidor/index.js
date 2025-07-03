@@ -444,32 +444,52 @@ app.delete('/pacientes/:documento', async (req, res) => {
 
 app.post('/proceso-clinico', async (req, res) => {
   const {
-    fecha, id_hc, tipoConsulta, anamnesis,
-    examenFisico, diagnostico, tratamiento, nota
+    fecha, id_hc, tipoConsulta, anamnesis, examenFisico,
+    diagnostico, tratamiento, nota,
+    enfermedadesActuales, medicamentos, metodosAnticonceptivos, estadoMental,
+    ta, fc, temp, frecuenciaRespiratoria, peso, talla, imc,
+    examenesComplementarios, laboratorio, queEstudios, antecedentesFamiliares
   } = req.body;
+
+  if (!fecha || !id_hc || !tipoConsulta) {
+    return res.status(400).json({ message: "Faltan campos obligatorios: fecha, id_hc o tipoConsulta." });
+  }
 
   let connection;
 
   try {
     connection = await pool.getConnection();
 
-    await connection.query(
-      `INSERT INTO ProcesoClinico 
-      (fecha, id_hc, tipoConsulta, anamnesis, examenFisico, diagnostico, tratamiento, nota)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [fecha, id_hc, tipoConsulta, anamnesis, examenFisico, diagnostico, tratamiento, nota]
-    );
+    const sql = `
+      INSERT INTO ProcesoClinico (
+        fecha, id_hc, tipoConsulta, anamnesis, examenFisico,
+        diagnostico, tratamiento, nota,
+        enfermedadesActuales, medicamentos, metodosAnticonceptivos, estadoMental,
+        ta, fc, temp, frecuenciaRespiratoria, peso, talla, imc,
+        examenesComplementarios, laboratorio, queEstudios, antecedentesFamiliares
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    const valores = [
+      fecha, id_hc, tipoConsulta, anamnesis, examenFisico,
+      diagnostico, tratamiento, nota,
+      enfermedadesActuales, medicamentos, metodosAnticonceptivos, estadoMental,
+      ta, fc, temp, frecuenciaRespiratoria, peso, talla, imc,
+      examenesComplementarios, laboratorio, queEstudios, antecedentesFamiliares
+    ];
+
+    await connection.query(sql, valores);
 
     res.status(200).json({ message: "Proceso clínico guardado exitosamente." });
 
   } catch (error) {
     console.error("❌ Error en POST /proceso-clinico:", error);
     res.status(500).json({ message: "Error al guardar el proceso clínico." });
-
   } finally {
     if (connection) connection.release();
   }
 });
+
 
 
 app.get("/historial/:documento", async (req, res) => {

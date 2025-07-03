@@ -1,22 +1,38 @@
 /*---- Estructura General del Componente BuscarHC ----------------------------------------------*/
 .form-wrapper {
   width: 100%;
-  padding: 20px;
+  gap: 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-form {
+.form-card {
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  padding: 50px;
-  width: 90%;
-  max-width: 600px;
+  padding: 30px;
+  width: 100%;
+}
+
+.form {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 20px;
+}
+
+.form2 {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+}
+
+.form3 {
+  padding: 4rem;
+  background-color: whitesmoke;
 }
 
 /*---- Título ----------------------------------------------------------------------------------*/
@@ -61,10 +77,43 @@ form input2 {
   font-size: 10px;
 }
 
+.search {
+  padding: 6px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 15px;
+  background-color: white;
+  color: #333;
+}
+
 form input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(60, 178, 42, 0.2);
+}
+
+.details {
+  font-weight: bold;
+  text-decoration: none;
+  color: blue;
+  text-decoration: none;
+}
+
+.details:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
+
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.grid-3-cols p {
+  margin: 0;
 }
 
 /*---- Botón Buscar ----------------------------------------------------------------------------*/
@@ -156,5 +205,115 @@ form input:focus {
 
   .save1 {
     font-size: 14px;
+  }
+}
+
+
+/* =============== NUEVO GRID 3 COLUMNAS =============== */
+.dp-grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(200px,1fr));
+  gap:1rem;
+}
+
+/* Tarjeta individual */
+.dp-item{
+  background: white;
+  border:1px solid #e5e5e5;
+  border-radius:12px;
+  padding:.8rem 1rem;
+  box-shadow:0 1px 4px rgba(0,0,0,.05);
+  gap:.35rem;
+}
+
+.dp-section-title{
+  margin: 2rem;
+  margin-bottom: 2.5vw;
+  text-align: center;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+/* Súbele ligeramente el peso de la etiqueta */
+.dp-item .dp-label{font-weight:600;color:#555}
+.dp-item .dp-value{color:#222;word-break:break-word}
+
+/* Responsivo - 2 columnas en tablet, 1 en móvil */
+@media(max-width:980px){
+  .dp-grid-3{grid-template-columns:repeat(2,minmax(200px,1fr));}
+}
+@media(max-width:600px){
+  .dp-grid-3{grid-template-columns:1fr;}
+}
+
+/* =============== CONTENEDOR FORM4 =============== */
+.form4 {
+  width: 100%;
+  max-width: 1100px;  /* controla el ancho máximo del formulario */
+  margin: 2rem;         /* separación interna uniforme */
+}
+
+.form4 h2 {
+  margin-bottom: 2.5vw;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* =============== GRILLA DE CAMPOS FORM4 =============== */
+.form4-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 24px;
+}
+
+.form4 .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form4 label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.form4 input,
+.form4 textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form4 input:focus,
+.form4 textarea:focus {
+  outline: none;
+  border-color: var(--primary-color, #3cb22a);
+  box-shadow: 0 0 0 3px rgba(60, 178, 42, 0.2);
+}
+
+/* =============== RESPONSIVIDAD FORM4 =============== */
+@media (max-width: 980px) {
+  .form4-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .form4 {
+    padding: 30px;
+  }
+  .form4-grid {
+    grid-template-columns: 1fr;
+  }
+  .form4 h2 {
+    font-size: 24px;
+    margin-bottom: 6vw;
   }
 }

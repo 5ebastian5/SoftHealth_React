@@ -111,7 +111,7 @@ export default function Perfil() {
           </div>
         </div>
 
-        <button type="submit" className="save6">Guardar</button>
+        <button type="submit" className="save6" >Guardar</button>
 
         {mensaje && (
           <div className={`alert6 ${tipoMensaje === "exito" ? "alert6-exito" : "alert6-error"}`}>

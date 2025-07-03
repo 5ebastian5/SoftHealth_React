@@ -52,12 +52,7 @@ export default function Nav() {
                 <li>
   {isLoggedIn ? (
     <button onClick={handleLogout} className="logout-btn">
-      <img 
-        src="/Images/logout.svg" 
-        alt="Cerrar Sesión" 
-        className="user" 
-        title="Cerrar Sesión"
-      />
+      Cerrar Sesión
     </button>
   ) : (
     <Link to="/login">

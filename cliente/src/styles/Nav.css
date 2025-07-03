@@ -10,7 +10,7 @@
 
 /*-- Header (contenedor interno de la barra) -----------------------------------------------------*/
 header {
-    background-color: #454545;;
+    background-color: #454545;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
@@ -84,6 +84,17 @@ nav ul li .home:hover,
 nav ul li .user:hover,
 nav ul li .phone:hover {
     filter: grayscale(100%) invert(15%);
+}
+
+.logout-btn {
+    color: white;
+    background-color: #454545;
+    border: 0;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 /*-- Responsive (pantallas menores a 768px) -------------------------------------------------------*/
