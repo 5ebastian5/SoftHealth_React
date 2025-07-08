@@ -59,7 +59,7 @@ export default function Home() {
                         <p>Accede a tu perfil, consulta tu historia clínica y gestiona tus citas médicas.</p>
                         <Link 
                             className="signin" 
-                            to="/login/paciente" 
+                            to="/login" 
                             role="button"
                             aria-label="Iniciar sesión como paciente"
                         >
@@ -78,7 +78,7 @@ export default function Home() {
                         <p>Accede a tu perfil profesional, visualiza historias clínicas y gestiona tus consultas.</p>
                         <Link 
                             className="signin" 
-                            to="/login/medico" 
+                            to="/login" 
                             role="button"
                             aria-label="Iniciar sesión como médico"
                         >
@@ -97,7 +97,7 @@ export default function Home() {
                         <p>Gestiona el sistema, administra usuarios, médicos, pacientes y recursos.</p>
                         <Link 
                             className="signin" 
-                            to="/login/administrador" 
+                            to="/login" 
                             role="button"
                             aria-label="Iniciar sesión como administrador"
                         >

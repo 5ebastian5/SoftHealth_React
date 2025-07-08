@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/HC.css";
+import Nav from '../Nav.js';
+import Footer from '../Footer.js';
 
 export default function BuscarHC() {
   const [documento, setDocumento] = useState("");
@@ -56,8 +58,10 @@ export default function BuscarHC() {
   };
 
   return (
-    <div className="form2">
-      <form onSubmit={(e) => { e.preventDefault(); handleBuscar(); }}>
+    <div>
+      <Nav />
+      
+      <form className="up" onSubmit={(e) => { e.preventDefault(); handleBuscar(); }}>
         <h2>Buscar Historial Clínico</h2>
 
         <div className="form-group">
@@ -74,6 +78,7 @@ export default function BuscarHC() {
         </div>
 
         <button type="submit" className="save">Buscar</button>
+        <a onClick={() => navigate(-1)} className="details">Volver</a>
 
         {mensaje && (
           <div className="alert alert-error">
@@ -91,6 +96,7 @@ export default function BuscarHC() {
           </div>
         )}
       </form>
+      <Footer/>
     </div>
   );
 }

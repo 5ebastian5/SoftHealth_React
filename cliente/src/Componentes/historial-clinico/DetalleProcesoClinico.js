@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/HC.css";
+import Nav from '../Nav.js';
+import Footer from '../Footer.js';
+
 
 export default function DetalleProceso() {
   const { state } = useLocation();
@@ -56,19 +59,19 @@ export default function DetalleProceso() {
   }
 
   return (
-    <div className="form3">
-      <h2 className="dp-heading">Detalle del Proceso Clínico</h2>
+    <div>
+      <Nav />
+      <h2 className="up">Detalle del Proceso Clínico</h2>
 
       {/* CABECERA con datos personales + generales */}
       <div className="dp-header-grid">
-  <div><strong>Nombre:</strong> {datosPaciente?.nombre} {datosPaciente?.apellido}</div>
-  <div><strong>Teléfono:</strong> {datosPaciente?.telefono}</div>
-  <div><strong>Nro. Documento:</strong> {documento}</div>
-  <div><strong>Registro:</strong> {index}</div>
-  <div><strong>Fecha:</strong> {proceso.fecha}</div>
-  <div><strong>Tipo Consulta:</strong> {proceso.tipoConsulta}</div>
-</div>
-
+        <div><strong>Nombre:</strong> {datosPaciente?.nombre} {datosPaciente?.apellido}</div>
+        <div><strong>Teléfono:</strong> {datosPaciente?.telefono}</div>
+        <div><strong>Nro. Documento:</strong> {documento}</div>
+        <div><strong>Registro:</strong> {index}</div>
+        <div><strong>Fecha:</strong> {proceso.fecha}</div>
+        <div><strong>Tipo Consulta:</strong> {proceso.tipoConsulta}</div>
+      </div>
 
       {/* SECCIÓN 1: Anamnesis */}
       <section className="form4">
@@ -108,6 +111,7 @@ export default function DetalleProceso() {
       {mensaje && (
         <div className={`alert1 ${tipoAlerta === "exito" ? "alert1-exito" : "alert1-error"}`}>{mensaje}</div>
       )}
+      <Footer />
     </div>
   );
 }

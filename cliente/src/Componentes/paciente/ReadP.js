@@ -77,7 +77,7 @@ export default function ReadP() {
                       onClick={() => handleEliminar(paciente.documento)}
                       className="btn2 danger"
                     >
-                      Eliminar
+                      Suprimir
                     </button>
                   </td>
                 </tr>

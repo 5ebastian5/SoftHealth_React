@@ -89,7 +89,7 @@ export default function ReadM() {
                       onClick={() => handleEliminar(medico.documento)}
                       className="btn2 danger"
                     >
-                      Eliminar
+                      Suprimir
                     </button>
                   </td>
                 </tr>

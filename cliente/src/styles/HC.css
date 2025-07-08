@@ -43,6 +43,10 @@ form h2 {
   font-weight: bold;
 }
 
+.up {
+  margin-top: 6.5rem;
+}
+
 /*---- Agrupación de Campos ---------------------------------------------------------------------*/
 .form-group1 {
   display: flex;
@@ -97,6 +101,8 @@ form input:focus {
   text-decoration: none;
   color: blue;
   text-decoration: none;
+  align-self: center;
+  margin-top: 1rem;
 }
 
 .details:hover{

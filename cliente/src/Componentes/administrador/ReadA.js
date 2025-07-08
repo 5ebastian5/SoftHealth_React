@@ -102,7 +102,7 @@ export default function ReadA() {
                       className="btn2 danger"
                       onClick={() => eliminarAuxiliar(aux.documento)}
                     >
-                      Eliminar
+                      Suprimir
                     </button>
                   </td>
                 </tr>

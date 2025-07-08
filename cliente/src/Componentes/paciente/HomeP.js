@@ -60,8 +60,8 @@ export default function HomeP() {
                 <div className="options-grid">
                     <div className="option-card">
                         <img 
-                            src="/Images/user.svg" 
-                            alt="Icono Citas Medicas" 
+                            src="/Images/profile.png" 
+                            alt="Icono Perfil" 
                             className="option-icon" 
                             loading="lazy"
                         />

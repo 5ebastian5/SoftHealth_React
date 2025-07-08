@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Profile.css";
 
 export default function Perfil() {
@@ -7,6 +8,7 @@ export default function Perfil() {
   const [mensaje, setMensaje] = useState("");
   const [tipoMensaje, setTipoMensaje] = useState("");
   const [imagenPerfil, setImagenPerfil] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!userLocal) {
@@ -112,6 +114,7 @@ export default function Perfil() {
         </div>
 
         <button type="submit" className="save6" >Guardar</button>
+        <a onClick={() => navigate(-1)} className="details">Volver</a>
 
         {mensaje && (
           <div className={`alert6 ${tipoMensaje === "exito" ? "alert6-exito" : "alert6-error"}`}>

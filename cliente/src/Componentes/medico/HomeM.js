@@ -54,7 +54,7 @@ export default function HomeM() {
                 <div className="options-grid">
                     <div className="option-card">
                         <img 
-                            src="/Images/user.svg" 
+                            src="/Images/paciente.png" 
                             alt="Icono Paciente" 
                             className="option-icon" 
                             loading="lazy"
@@ -92,8 +92,8 @@ export default function HomeM() {
 
                     <div className="option-card">
                         <img 
-                            src="/Images/user.svg" 
-                            alt="Icono Citas Medicas" 
+                            src="/Images/profile.png" 
+                            alt="Icono Perfil" 
                             className="option-icon" 
                             loading="lazy"
                         />

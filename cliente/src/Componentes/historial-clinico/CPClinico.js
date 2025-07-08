@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/HC.css";
 
 export default function CPClinico() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const idHistoriaClinica = location.state?.id_hc || "";
 
   const [formData, setFormData] = useState({
@@ -237,6 +239,9 @@ export default function CPClinico() {
       {mensaje}
     </div>
   )}
+  <div className="form2">
+        <button onClick={() => navigate(-1)} className="save1">Volver</button>
+      </div>
 </form>
 
     </>

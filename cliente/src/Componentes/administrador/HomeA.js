@@ -42,7 +42,7 @@ export default function HomeA() {
             <div className="main-content-container">
                 <div className="welcome-section">
                     <h1 className="display-5 accordion">
-                      Bienvenida, {user ? user.nombre : ''}
+                      Bienvenid@, {user ? user.nombre : ''}
                     </h1>
                     <p className="lead">
                       Desde aquí podrás gestionar médicos, pacientes y EPS, así como realizar otras tareas administrativas.
@@ -137,8 +137,8 @@ export default function HomeA() {
 
                     <div className="option-card">
                         <img 
-                            src="/Images/user.svg" 
-                            alt="Icono Citas Medicas" 
+                            src="/Images/perfil.png"     
+                            alt="Icono Perfil" 
                             className="option-icon" 
                             loading="lazy"
                         />
